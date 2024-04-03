@@ -1,2 +1,2 @@
 # My-Learning-Journey
-This repository is a record of my learning progress.
+Welcome to my GitHub repository dedicated to my learning journey! Here, you'll find information about the technologies and projects I've been exploring.
