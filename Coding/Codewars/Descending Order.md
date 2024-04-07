@@ -85,8 +85,27 @@ Well the **Collections** class is for sorting the arraylist in descending order,
 
 `int copy = num, temp = 0, res = 0;` Here declaring some bunch of integers we need later on. `int copy = num,` Why we copy the value of num into a variable?, Because there is a final keyword in the parameter `sortDesc(final int num)` if we even try to change the value of num the compiler will spam you with error you don't even know off.<br />
 
-What is going on in the while loop?.....(⚆ᗝ⚆). First we are separating last digit from the given number and store it to temp variable in `temp = copy % 10;`. Now we are adding the digit in temp to the arraylist in `n.add(temp);`. Now we are eliminating the last digit in the number in `copy /= 10;`. The while loop will run until the number becomes zero, so 
+What is going on in the while loop?.....(⚆ᗝ⚆). First we are separating last digit from the given number and store it to temp variable in &emsp;&emsp;&emsp; `temp = copy % 10;`. Now we are adding the digit in temp to the arraylist in `n.add(temp);`. Now we are eliminating the last digit in the number in `copy /= 10;`. The while loop will run until the number becomes zero, so 
 each and every number will be stripped don't worry.
+
+Let's do the calculation here, I will give some calculations for it like 2 loop examples for better understanding the loop function.
+
+```
+Iteration 1:
+Assume num = 4352,
+Variables and their values: copy = 4352, temp = 0, n = {}
+Conditions and their states: ( copy > 0 ) ==> ( 4352 > 0 ) ==> True
+      temp = ( copy % 10 ) ==> ( 4352 % 10 ) ==> 2
+      n = {} ==> {2}
+      copy = ( 4352 / 10 ) ==> 435
+
+Iteration 2:
+Variables and their values: copy = 435, temp = 2, n = {2}
+Conditions and their states: ( copy > 0 ) ==> ( 435 > 0 ) ==> True
+      temp = ( copy % 10 ) ==> ( 435 % 10 ) ==> 5
+      n = {2} ==> {2, 5}
+      copy = ( 435 / 10 ) ==> 43
+```
 
 &emsp;&emsp; ***Step 2:***
 
@@ -94,7 +113,7 @@ each and every number will be stripped don't worry.
     //Step 2: sort the array in descending order
     Collections.sort(n, Collections.reverseOrder());
 ```
-This step is having the honor of the easiest step in the problem. We are just calling the sort function and inside this function we are calling the reverseOrder function from collections. This will pretty much sort the arraylit in descending order.
+This step is having the honor of the easiest step in the problem. We are just calling the sort function and inside this function we are calling the reverseOrder function from collections. This will pretty much sort the arraylit in descending order. After sorting the n will become &emsp;&emsp;&emsp;&emsp;&emsp;`n = {5, 4, 3, 2}`.
 
 &emsp;&emsp; ***Step 3:***
 
@@ -110,4 +129,49 @@ This step is having the honor of the easiest step in the problem. We are just ca
 
 `for (int i=0, j=size; i<size; i++, --j)` in this for loop we are having two variable declarations and two increment or decrement operations ___This is f*****g illeagal ╭(* _ *)╮.___ No this is completely valid.
 
-`res = res + n.get(i) * (int) Math.pow(10, j-1);` here is the tricky part. First we are getting the **ith** element from the arraylist.
+`res = res + n.get(i) * (int) Math.pow(10, j-1);` here is the tricky part. First we are getting the **ith** element from the arraylist in `n.get(i)`. Second we are getting the power of 10 in (size - 1) in `(int) Math.pow(10, j-1)`. Then multiply it and add it to the res, we are done.
+
+Let's do the calculation here, I will give some calculations for it like 2 loop examples for better understanding the loop function.
+```
+Iteration 1:
+Assume size = 4, n = { 5,4,3,2 }                                // we need to make res have value of 5432 is our mission
+variables and their values: i = 0, j = 4, res = 0               // res was declared in the first step 
+conditions and their states: (i < size) ==> ( 0 < 4 ) ==> True
+calculation:
+      res = 0 + 5 * ( 10 raise to the power of 3 )
+      res = 0 + 5 * ( 1000 )
+      res = 0 + 5000
+      res = 5000
+
+Iteration 2:
+variables and their values: i = 1, j = 3, res = 5000           // after the iteration 1 
+conditions and their states: (i < size) ==> ( 1 < 4 ) ==> True
+calculation:
+      res = 5000 + 4 * ( 10 raise to the power of 2 )
+      res = 5000 + 4 * 100
+      res = 5000 + 400
+      res = 5400
+```
+Now return the res. That's it, **MISSION COMPLETED** ***+5 respect***
+
+### Personal Experience:
+
+&emsp;&emsp; My experience with this problem is mind f**k, heart warming and here comes the ***depression***. At first glance I divided the problems into the smaller problems. Now I know what to, at first I also tries the empty array declaration and found that it is not possible after getting some errors on my face (--_--). After that I researched some way to declare an empty array and how to use it that's how I came to know about the **ArrayList**. Even after founding the way i had some initial difficulties as we need to import the classes and I didn't know the names. First step is finished, it was a good experience ヽ(•‿•)ノ.
+
+&emsp;&emsp; The second step is just easy, I used chatGPT to know about the function names and the implementation of it and I need to say it present to you like it was simple as a oneliner but it was tough to use it on code.
+
+&emsp;&emsp; Now this is the step **I am completely PROUD**. For this I really got my hands dirty on algorithms, I really calculated the calculations and after completion I felt really really happy about it. It felt like I can literally do anything on this world (⌒_⌒). Well i know that's just not possible, but I was so satisfied with it and I felt proud of myself and my confidence got skyrocketed. For some time, after that I got to know there is someone who finished this task in just three lines, **JUST THREE LINES** can you imagine it. Here is the code see for yourself
+```java
+import java.util.Arrays;
+import java.util.Collections;
+
+public class DescendingOrder {
+    public static int sortDesc(final int num) {
+        String[] array = String.valueOf(num).split("");
+        Arrays.sort(array, Collections.reverseOrder());
+        return Integer.valueOf(String.join("", array));
+    }
+}
+```
+
+&emsp;&emsp; After seeing this I got humbled and my big head blasted. Now I'm back to my depressed state and everything is back to normal. Now I feel like my code is best and i don't care what others say in this. Maybe in the future I may feel like **Damn I'm so dumb in the past** as i will be better in the future than my current state. That's pretty much it see you in next problem.
