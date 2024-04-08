@@ -1,0 +1,1 @@
+a.endsWith(b) //compares if the string a ends with string b --> ( a = bill, b = ill ==> true ) , ( a = cheems, b = dog ==> false ).
